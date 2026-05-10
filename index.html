@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>biyani-bytes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main data-scroll-container>
+      <!-- Navigation -->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+                Foodie
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#hero">home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#dishes">Dishes</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+
+            <div class="hamburger" onclick="toggleMenu()">
+                ☰
+            </div>
+
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <div class="text">
+                <h1><span>AUTHENTIC</span>Awadhi Biryani, Made with Love and Tradition. </h1>
+                <p>Each byte feel special beacuse each pot made with real spices and traditional techniques.</p>
+                <button class="order-button"> Order Now </button>
+                <button class="visit-button"> Visit us</button>
+            </div>
+            <div class="img">
+                <img src="hero-img.jpg" alt="biyani-img" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>At Biyani Bytes, we are passionate about bringing you the best biryani experience. Our chefs use
+                    traditional recipes and the freshest ingredients to create mouthwatering dishes that will satisfy
+                    your cravings. Whether you're a fan of classic chicken biryani or prefer a vegetarian option, we
+                    have something for everyone. Join us on this flavorful journey and discover why Biyani Bytes is the
+                    go-to destination for biryani lovers!</p>
+
+            </div>
+            <div class="about-image">
+                <img src="banner-img.jpg" alt="About Biyani Bytes" class="about-img">
+                <img src="restaurant-img.jpg" alt="About Biyani Bytes" class="about-img">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="dishes">
+        <h2>BEYOND BIRYANI</h2>
+        <p>try our other dishes along with our signature biryanis</p>
+        <div class="dishes-container">
+            <div class="dish-card">
+                <img src="chicken-biryani.jpg" alt="Chicken Biryani" class="dish-image">
+                <h3>Chicken Biryani</h3>
+                <p>Aromatic basmati rice layered with tender chicken, infused with spices and herbs.</p>
+            </div>
+            <div class="dish-card">
+                <img src="vegetable-biryani.jpg" alt="Vegetable Biryani" class="dish-image">
+                <h3>Vegetable Biryani</h3>
+                <p>A flavorful blend of basmati rice and fresh vegetables, cooked with traditional spices.</p>
+            </div>
+            <div class="dish-card">
+                <img src="mutton-biryani.jpg" alt="Mutton Biryani" class="dish-image">
+                <h3>Mutton Biryani</h3>
+                <p>Rich and aromatic, this biryani features tender mutton cooked in a blend of traditional spices.</p>
+            </div>
+            <img src="arrow.png" alt="arrow image" class="arrow-image" onclick="viewMore()">
+        </div>
+    </section>
+
+
+    <section id="reviews">
+        <h2>What Our Customers Say</h2>
+        <p>real people, real meal, real opinions</p>
+        <div class="reviews-container">
+            <div class="review-card">
+                <p>"The best biryani I've ever had! The flavors were incredible and the portion size was perfect. Highly
+                    recommend!"</p>
+                <h4>- Sarah M.</h4>
+            </div>
+            <div class="review-card">
+                <p>"Biyani Bytes never disappoints! The chicken biryani is my go-to order, and it's always delicious.
+                    Great service too!"</p>
+                <h4>- John D.</h4>
+            </div>
+            <div class="review-card">
+                <p>"I tried the vegetable biryani and it was fantastic! The spices were perfectly balanced, and the
+                    vegetables were fresh. Will definitely order again!"</p>
+                <h4>- Emily R.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <h2>Ready to Savor the Flavor?</h2>
+        <p>Order now and experience the irresistible taste of Biyani Bytes!</p>
+        <button class="order-button">Order Now</button>
+    </section>
+
+    <section id="contact">
+        <h2>Find us here</h2>
+        <p>Stop by our kitchen or call ahead with questions about your order.</p>
+
+        <div class="contact-item">
+            <span class="icon">📧</span>
+            <h3>Email</h3>
+            <p>Reach us at <a href="mailto:hello@biryani.local">hello@biryani.local</a></p>
+        </div>
+
+        <div class="contact-item">
+            <span class="icon">📞</span>
+            <h3>Phone</h3>
+            <p>Call us at <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+        </div>
+
+        <div class="contact-item">
+            <span class="icon">📍</span>
+            <h3>Office</h3>
+            <p>142 King Street, Sydney NSW 2000 Australia</p>
+            <a href="https://maps.google.com/?q=142+King+Street+Sydney+NSW+2000+Australia" target="_blank">
+                Get directions ➜
+            </a>
+        </div>
+
+        <div class="map">
+
+            <img src="map-placeholder.png" alt="Map showing location in Sydney">
+        </div>
+
+    </section>
+
+    <footer>
+        <footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <h2>Logo</h2>
+    </div>
+
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#">Order online</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">About us</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">🌐</a>
+      <a href="#" aria-label="Instagram">📸</a>
+      <a href="#" aria-label="X (Twitter)">✖️</a>
+      <a href="#" aria-label="LinkedIn">💼</a>
+      <a href="#" aria-label="YouTube">▶️</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer-bottom">
+    <p>© 2025 Biryani Focus. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="#">Terms of service</a></li>
+      <li><a href="#">Cookie settings</a></li>
+    </ul>
+  </div>
+    </footer>
+  </main>
+
+</body>
+
+</html>
