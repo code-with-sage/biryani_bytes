@@ -345,8 +345,9 @@ section {
 }
 
 .dish-card:hover {
-    transform: translateY(-5px);
+     transform: translate(-2px, -2px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-shadow: 4px 4px 0 black;
 }
 
 .dish-image {
