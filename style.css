@@ -18,7 +18,7 @@
 
   /* Font Sizes */
   --fs-small: 0.875rem;
-  --fs-medium: 1rem;
+  --fs-medium: 1.3rem;
   --fs-large: 1.5rem;
   --fs-xl: 2.23rem;
 
@@ -100,10 +100,18 @@ header nav ul {
   width: 100%;
   gap: 2rem;
 }
-/* 
-header nav ul li a:hover {
-  color: var(--primary-color-1);
-} */
+
+header nav ul li a {
+  position: relative;
+}
+
+.logo {
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-color-1);
+}
 
 header nav ul li a::after {
     content: '';
@@ -134,17 +142,41 @@ header nav a {
 
 header nav .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
+  z-index: 1100;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: var(--transition);
+  user-select: none;
+}
+
+header nav .hamburger.active {
+  transform: rotate(90deg);
+  color: var(--primary-color-1);
+}
+
+/* Overlay behind the mobile nav panel */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.nav-overlay.active {
+  display: block;
+  opacity: 1;
 }
 
 /* general styling */
 
 section {
   padding: 3rem;
-  height: 100dvh;
   width: 100%;
+  scroll-margin-top: 10dvh;
 }
 
 /* ==================================================
@@ -153,26 +185,29 @@ section {
 
 #hero {
     padding: 4rem;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(10dvh + 2rem);
 }
 
 .hero-content {
-    /* max-width: 1100px; */
-    /* margin: 0 auto; */
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
-    /* min-height: 450px; */
-    /* border: 2px solid #777; */
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
 }
 
 /* LEFT SIDE */
 .hero-content .text {
     flex: 1;
-    /* background-color: #f5f5f5; */
     padding: 60px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40dvh;
-
+    width: auto;
 }
 
 .hero-content .text h1 {
@@ -181,7 +216,6 @@ section {
     font-weight: 700;
     font-family:"Fascinate", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin-bottom: 20px;
-    /* max-width: 500px; */
 }
 
 .hero-content .text h1 span {
@@ -191,14 +225,9 @@ section {
     font-weight: 800;
 }
 
-/* .hero-content .text h1 span:hover {
-    font-style: italic;
-} */
-
 .hero-content .text p {
     font-size: 1rem;
     color: #555;
-    /* max-width: 450px; */
     margin-bottom: 30px;
 }
 
@@ -206,6 +235,7 @@ section {
 .buttons {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .order-button,
@@ -239,7 +269,6 @@ section {
 /* RIGHT SIDE */
 .hero-content .img {
     flex: 1;
-    /* background: #d9d9d9; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,24 +289,28 @@ section {
 
 #about {
     background: #f0e8e8;
+    height: 89dvh;
 }
 
 #about .about-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
 }
 
 #about .about-container .about-text {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 2rem;
-  gap: 1rem;
+    width: 16%;
+    /* display: flex; */
+    flex-direction: row;
+    margin-top: 2rem;
+    gap: 1rem;
+    margin-left: 10%;
+    align-content: flex-end;
 }
 
 #about h2 {
@@ -285,6 +318,7 @@ section {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    width: 100%;
 }
 
 #about .about-container .about-text p {
@@ -293,19 +327,21 @@ section {
 }
 
 #about .about-container .about-image {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 #about .about-container .about-image img {
-  width: 40%;
-  height: 75%;
-  margin: 10px;
-  object-fit: cover;
-  border-radius: 50px;
-  border: 2px solid var(--primary-color-1);
+    width: 40%;
+    height: 75%;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 50px;
+    border: 2px solid var(--primary-color-1);
 }
 
 /* ==================================================
@@ -333,7 +369,6 @@ section {
 .dishes-container {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    height: 50dvh;
     gap: 1.5rem;
     align-items: stretch;
 }
@@ -350,13 +385,13 @@ section {
 
 .dish-card:hover {
      transform: translate(-2px, -2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     box-shadow: 4px 4px 0 black;
 }
 
 .dish-image {
     width: 100%;
     height: 40%;
+    min-height: 160px;
     object-fit: cover;
 }
 
@@ -472,16 +507,18 @@ section {
 
 #cta {
     width: 100%;
-    height: 35dvh;
+    min-height: 35dvh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
 #cta .text {
     flex: 1;
     padding:1.2rem 2rem;
+    min-width: 280px;
 }
 
 #cta .text h2 {
@@ -515,7 +552,8 @@ section {
 .cta-quote {
     flex: 1;
     width: 50%;
-    height: 100%;
+    min-width: 280px;
+    min-height: 200px;
     object-fit: cover;
     background: #ddd;
 }
@@ -528,6 +566,7 @@ section {
     max-width:1200px;
     margin:auto;
     padding:60px 30px;
+    height: auto;
 }
 
 .small-title{
@@ -552,11 +591,13 @@ section {
     display:flex;
     gap:6dvw;
     align-items:flex-start;
+    flex-wrap: wrap;
 }
 
 /* Left Side */
 .contact-info{
     flex:1;
+    min-width: 260px;
 }
 
 .info-box{
@@ -589,10 +630,12 @@ section {
 /* Map */
 .map-container{
     flex:2;
+    min-width: 280px;
+    width: 100%;
 }
 
 .map-container iframe{
-    width: 80%;
+    width: 100%;
     height: 55dvh;
     border: aliceblue;
     border-radius: 4px;
@@ -639,6 +682,8 @@ footer {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-nav a {
@@ -699,6 +744,8 @@ footer {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-links a {
@@ -733,4 +780,239 @@ footer {
     50% {
         border-color: transparent;
     }
+}
+
+/* ==================================================
+   RESPONSIVE / MOBILE
+   (mobile-first breakpoints layered on top of desktop styles above)
+================================================== */
+
+/* ---------- Tablets & small laptops (<= 1024px) ---------- */
+@media (max-width: 1024px) {
+  header nav {
+    width: 50%;
+  }
+
+  .dishes-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dish-card:nth-child(1) {
+    grid-column: span 2;
+  }
+
+  .reviews-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #about .about-container .about-text {
+    width: 40%;
+  }
+
+  #about .about-container .about-image {
+    width: 55%;
+  }
+}
+
+/* ---------- Tablets / large phones (<= 768px) ---------- */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Header + hamburger menu */
+  header {
+    padding: 1rem 1.25rem;
+  }
+
+  header nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100dvh;
+    background: var(--background-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    box-shadow: var(--shadow-medium);
+    transform: translateX(100%);
+    transition: var(--transition);
+  }
+
+  header nav.active {
+    transform: translateX(0);
+  }
+
+  header nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  header nav .hamburger {
+    display: block;
+  }
+
+  /* Hero */
+  #hero {
+    padding: 2rem 1.25rem;
+    padding-top: calc(10dvh + 1.5rem);
+  }
+
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-content .text {
+    padding: 20px 10px;
+    align-items: center;
+  }
+
+  .hero-content .text h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-content .text h1 span {
+    font-size: 2.5rem;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  /* About */
+  #about {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
+
+  #about .about-container {
+    flex-direction: column;
+  }
+
+  #about .about-container .about-text,
+  #about .about-container .about-image {
+        width: 75%;
+        height: 35%;
+  }
+
+  #about .about-container .about-image img {
+    width: 75%;
+    height:auto;
+    gap: 7px 
+  }
+
+  /* Dishes */
+  .dishes-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .dish-card:nth-child(1) {
+    grid-column: span 1;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .dish-card:nth-child(1) .dish-image {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .dish-card:nth-child(1) .card-text {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .dish-card:nth-child(1) h3,
+  .dish-card:nth-child(1) p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Reviews */
+  .reviews-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* CTA */
+  #cta {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  #cta .text {
+    order: 2;
+  }
+
+  .cta-quote {
+    order: 1;
+    width: 100%;
+    min-height: 220px;
+  }
+
+  /* Contact */
+  #contact {
+    padding: 40px 20px;
+  }
+
+  .contact-header h1 {
+    font-size: 32px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .map-container iframe {
+    height: 40dvh;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- Small phones (<= 480px) ---------- */
+@media (max-width: 480px) {
+  .hero-content .text h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-content .text h1 span {
+    font-size: 2rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .order-button,
+  .menu-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  #about .about-container .about-image img {
+    width: 70%;
+    height: auto;
+  }
+
+  #dishes,
+  #reviews {
+    padding: 3rem 5%;
+  }
+
+  .contact-header h1 {
+    font-size: 26px;
+  }
 }
